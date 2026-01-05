@@ -34,13 +34,15 @@ export default function Goals() {
 
   return (
     <div className="container-g">
-      <h1>
-        Goals {goal} - current balance{" "}
-        {balance.toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        })}
-      </h1>
+      <div className="header-g">
+        <h1>
+          Goals {goal} - current balance{" "}
+          {balance.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </h1>
+      </div>
 
       <div className="content-g">
         {Array.from({ length: goal }, (_, i) => {

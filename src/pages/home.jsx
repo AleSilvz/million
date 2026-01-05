@@ -1,6 +1,7 @@
-import { Router, useNavigate } from "react-router";
-import "./Home.css";
+import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import "./Home.css";
+
 export default function Home() {
   const navigate = useNavigate();
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
