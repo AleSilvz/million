@@ -3,7 +3,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 export default function Home() {
   const navigate = useNavigate();
-  const local = JSON.parse(localStorage.getItem("goalsData"));
+  const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const [currentBalance, setCurrentBalance] = useState(0);
 
   function renderCurrentBalance() {
