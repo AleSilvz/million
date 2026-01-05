@@ -4,7 +4,7 @@ import Goals from "./pages/goals";
 
 function App() {
   return (
-    <Routes>
+    <Routes >
       <Route path="/" element={<Home />} />
       <Route path="/goals" element={<Goals />} />
     </Routes>
