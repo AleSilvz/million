@@ -46,13 +46,19 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  gap: 10px;
 }
-
 
 @media (max-width: 600px) {
   .header-g {
     padding: 10px;
     font-size: 10px;
+    flex-direction: column;
+    gap: 0;
+
+    h1 {
+      font-size: 18px;
+    }
   }
 
   .content-g {

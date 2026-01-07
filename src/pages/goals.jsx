@@ -3,7 +3,8 @@ import "./Goals.css";
 import { useEffect, useState } from "react";
 
 export default function Goals() {
-  const goal = useLocation().state?.goal;
+  const goal = Number(useLocation().state?.goal);
+  const goalsReal = (goal * (goal + 1)) / 2;
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const [balance, setBalance] = useState(0);
 
@@ -35,8 +36,15 @@ export default function Goals() {
   return (
     <div className="container-g">
       <div className="header-g">
+        <h1>Goals {goal}</h1>
         <h1>
-          Goals {goal} - current balance{" "}
+          {goalsReal?.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </h1>
+        <h1>
+          Current Balance: {" "}
           {balance.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
