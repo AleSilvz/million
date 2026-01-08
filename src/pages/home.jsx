@@ -19,7 +19,12 @@ export default function Home() {
     renderCurrentBalance();
   }, []);
 
+  function goal(e) {
+    localStorage.setItem("goal", e.currentTarget.dataset.value);
+  }
+
   function goToGoal(e) {
+    goal(e);
     navigate(`/goals`, {
       state: {
         goal: e.currentTarget.dataset.value,

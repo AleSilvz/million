@@ -6,10 +6,11 @@ export default function Goals() {
   const goal = Number(useLocation().state?.goal);
   const goalsReal = (goal * (goal + 1)) / 2;
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
+  const localGoal = JSON.parse(localStorage.getItem("goal"));
   const [balance, setBalance] = useState(0);
 
   function updateBalance() {
-    setBalance((local[goal] || []).reduce((acc, e) => acc + Number(e), 0));
+    setBalance((local[localGoal] || []).reduce((acc, e) => acc + Number(e), 0));
   }
 
   useEffect(() => {
@@ -19,15 +20,15 @@ export default function Goals() {
   function addValue(e) {
     const valueDeposite = Number(e.currentTarget.dataset.value);
 
-    if (!local[goal]) {
-      local[goal] = [];
+    if (!local[localGoal]) {
+      local[localGoal] = [];
     }
 
-    const set = new Set(local[goal] || []);
+    const set = new Set(local[localGoal] || []);
 
     set.has(valueDeposite) ? set.delete(valueDeposite) : set.add(valueDeposite);
 
-    local[goal] = [...set];
+    local[localGoal] = [...set];
 
     localStorage.setItem("goalsData", JSON.stringify(local));
     updateBalance();
@@ -36,7 +37,7 @@ export default function Goals() {
   return (
     <div className="container-g">
       <div className="header-g">
-        <h1>Goals {goal}</h1>
+        <h1>Goals {localGoal}</h1>
         <h1>
           {goalsReal?.toLocaleString("pt-BR", {
             style: "currency",
@@ -44,7 +45,7 @@ export default function Goals() {
           })}
         </h1>
         <h1>
-          Current Balance: {" "}
+          Current Balance:{" "}
           {balance.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -53,9 +54,9 @@ export default function Goals() {
       </div>
 
       <div className="content-g">
-        {Array.from({ length: goal }, (_, i) => {
+        {Array.from({ length: localGoal }, (_, i) => {
           const value = i + 1;
-          const select = local[goal] || [];
+          const select = local[localGoal] || [];
 
           return (
             <div
