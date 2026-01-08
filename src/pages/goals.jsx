@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./Goals.css";
 import { useEffect, useState } from "react";
 
@@ -8,6 +8,12 @@ export default function Goals() {
   const goalsReal = (localGoal * (localGoal + 1)) / 2;
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const [balance, setBalance] = useState(0);
+
+  const navigate = useNavigate();
+
+  if (!localGoal) {
+    navigate("/");
+  }
 
   function updateBalance() {
     setBalance((local[localGoal] || []).reduce((acc, e) => acc + Number(e), 0));
