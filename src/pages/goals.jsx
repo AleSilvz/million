@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 export default function Goals() {
   const goal = Number(useLocation().state?.goal);
-  const goalsReal = (goal * (goal + 1)) / 2;
+  const localGoal = Number(JSON.parse(localStorage.getItem("goal")));
+  const goalsReal = (localGoal * (localGoal + 1)) / 2;
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
-  const localGoal = JSON.parse(localStorage.getItem("goal"));
   const [balance, setBalance] = useState(0);
 
   function updateBalance() {
