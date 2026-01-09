@@ -4,16 +4,20 @@ import { useEffect, useState } from "react";
 
 export default function Goals() {
   const goal = Number(useLocation().state?.goal);
+  const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const localGoal = Number(JSON.parse(localStorage.getItem("goal")));
   const goalsReal = (localGoal * (localGoal + 1)) / 2;
-  const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const [balance, setBalance] = useState(0);
 
-  const navigate = useNavigate();
-
   if (!localGoal) {
-    navigate("/");
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
+
+  const navigate = useNavigate();
 
   function updateBalance() {
     setBalance((local[localGoal] || []).reduce((acc, e) => acc + Number(e), 0));
