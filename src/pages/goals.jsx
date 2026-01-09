@@ -47,7 +47,7 @@ export default function Goals() {
 
   return (
     <div className="container-g">
-      {/* <div className="header-g">
+      <div className="header-g">
         <h1>Goals {localGoal}</h1>
         <h1>
           {goalsReal?.toLocaleString("pt-BR", {
@@ -80,7 +80,7 @@ export default function Goals() {
             </div>
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }
