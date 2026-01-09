@@ -6,6 +6,7 @@ export default function Goals() {
   const goal = Number(useLocation().state?.goal);
   const local = JSON.parse(localStorage.getItem("goalsData")) || {};
   const localGoal = Number(JSON.parse(localStorage.getItem("goal")));
+  console.log(localGoal)
   const goalsReal = (localGoal * (localGoal + 1)) / 2;
   const [balance, setBalance] = useState(0);
 
@@ -46,7 +47,7 @@ export default function Goals() {
 
   return (
     <div className="container-g">
-      <div className="header-g">
+      {/* <div className="header-g">
         <h1>Goals {localGoal}</h1>
         <h1>
           {goalsReal?.toLocaleString("pt-BR", {
@@ -79,7 +80,7 @@ export default function Goals() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
