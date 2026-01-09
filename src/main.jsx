@@ -3,7 +3,7 @@ import { BrowserRouter, HashRouter } from "react-router";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <HashRouter basename="/million/">
+  <HashRouter>
     <App />
   </HashRouter>
 );
